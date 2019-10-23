@@ -44,6 +44,7 @@ collections:
         name: "sections"
         widget: "list"
         types:
+          #JUMBOTRON
           - label: "Jumbotron"
             name: "jumbotron"
             widget: object
@@ -52,3 +53,26 @@ collections:
               - { label: Button Text, name: buttonText, widget: string }
               - { label: "Deskotp Image", name: desktopImage, widget: image }
               - { label: "Mobile Image", name: mobileImage, widget: image }
+
+          #FEATURES
+          - label: "Features"
+            name: "features"
+            widget: object
+            fields:
+              - { label: Header, name: header, widget: string }
+              - { label: Description, name: description, widget: string }
+              - { label: Button Text, name: buttonText, widget: string }
+              - { label: Button Link, name: buttonLink, widget: string }
+              - {
+                  label: Numbered Features,
+                  name: numberedFeatures,
+                  widget: boolean,
+                  default: false,
+                }
+              - label: Features
+                name: features
+                widget: "list"
+                fields:
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: Title, name: title, widget: string }
+                  - { label: Description, name: description, widget: string }

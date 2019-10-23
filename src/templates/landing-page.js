@@ -1,8 +1,25 @@
 import React from "react"
+import Section from "../components/Section"
+import styled from "styled-components"
+
+const Layout = styled.div`
+  margin: 0 20px;
+  * {
+    box-sizing: border-box;
+    font-family: Montserrat;
+  }
+`
 
 export default props => {
-  console.log(props.data.markdownRemark.frontmatter)
-  return <div>Landing Page</div>
+  console.log(props.data.markdownRemark)
+  const { sections } = props.data.markdownRemark.frontmatter
+
+  return (
+    <Layout>
+      {sections &&
+        sections.map((section, i) => <Section key={i} {...section} />)}
+    </Layout>
+  )
 }
 
 export const pageQuery = graphql`
@@ -15,18 +32,22 @@ export const pageQuery = graphql`
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
-      excerpt(pruneLength: 160)
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
-        description
         sections {
           buttonText
           desktopImage
           header
           mobileImage
+          description
           type
+          features {
+            image
+            title
+            description
+          }
+          numberedFeatures
         }
       }
     }
