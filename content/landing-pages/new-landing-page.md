@@ -2,7 +2,7 @@
 templateKey: landing-page
 title: New landing page
 sections:
-  - buttonText: Verificar agora
+  - buttonText: Verificar grátis
     desktopImage: /img/hero-desktop.jpg
     header: |-
       # Reivindique uma **indenização** ‍pelo seu voo
@@ -10,4 +10,18 @@ sections:
       Verifique em um minuto se você tem direito a uma indenização:
     mobileImage: /img/hero-mobile.jpg
     type: jumbotron
+  - feature:
+      - description: >-
+          Com alguns cliques, identificamos se você tem direito a uma
+          indenização.
+        image: /img/airplane-ticket.png
+        title: Verifique seus direitos
+      - description: 'Cadastre o seu pedido online, sem sair de casa, em apenas 5 minutos.'
+        image: /img/smartphone.png
+        title: Reivindique online
+      - description: Nós cuidamos de toda a burocracia e você recebe o seu dinheiro.
+        image: /img/money-bag.png
+        title: Receba a indenização
+    type: features
 ---
+
