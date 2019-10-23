@@ -27,7 +27,7 @@ sections:
         title: Receba a indenização
     features:
       - description: >-
-          Com alguns cliques, identificamos se você tem direito a uma
+          Com apenas alguns cliques, identificamos se você tem direito a uma
           indenização.
         image: /img/airplane-ticket.png
         title: Verifique seus direitos
