@@ -26,6 +26,7 @@ sections:
         image: /img/money-bag.png
         title: Receba a indenização
     header: Como a Processos Aéreos funciona?
+    numberedFeatures: true
     type: features
 ---
 
