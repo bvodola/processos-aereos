@@ -14,7 +14,41 @@ collections:
     editor:
       preview: false
     fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "blog-post",
+        }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "landing-page"
+    label: "Landing Page"
+    folder: "content/landing-pages"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "landing-page",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Landing Page Sections"
+        name: "sections"
+        widget: "list"
+        types:
+          - label: "Jumbotron"
+            name: "jumbotron"
+            widget: object
+            fields:
+              - { label: Header, name: header, widget: markdown }
+              - { label: Button Text, name: buttonText, widget: string }
+              - { label: "Deskotp Image", name: desktopImage, widget: image }
+              - { label: "Mobile Image", name: mobileImage, widget: image }
