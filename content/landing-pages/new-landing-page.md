@@ -10,7 +10,10 @@ sections:
       Verifique em um minuto se você tem direito a uma indenização:
     mobileImage: /img/hero-mobile.jpg
     type: jumbotron
-  - feature:
+  - buttonLink: 'http://www.google.com'
+    buttonText: Quero ser indenizado
+    description: São apenas 3 passos para você obter a sua indenização!
+    feature:
       - description: >-
           Com alguns cliques, identificamos se você tem direito a uma
           indenização.
@@ -22,6 +25,7 @@ sections:
       - description: Nós cuidamos de toda a burocracia e você recebe o seu dinheiro.
         image: /img/money-bag.png
         title: Receba a indenização
+    header: Como a Processos Aéreos funciona?
     type: features
 ---
 
