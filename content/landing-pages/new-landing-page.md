@@ -25,6 +25,18 @@ sections:
       - description: Nós cuidamos de toda a burocracia e você recebe o seu dinheiro.
         image: /img/money-bag.png
         title: Receba a indenização
+    features:
+      - description: >-
+          Com alguns cliques, identificamos se você tem direito a uma
+          indenização.
+        image: /img/airplane-ticket.png
+        title: Verifique seus direitos
+      - description: 'Cadastre o seu pedido online, sem sair de casa, em apenas 5 minutos.'
+        image: /img/smartphone.png
+        title: Reivindique online
+      - description: Nós cuidamos de toda a burocracia e você recebe o seu dinheiro.
+        image: /img/money-bag.png
+        title: Receba a indenização
     header: Como a Processos Aéreos funciona?
     numberedFeatures: true
     type: features
