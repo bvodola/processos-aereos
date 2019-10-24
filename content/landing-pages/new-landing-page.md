@@ -10,7 +10,8 @@ sections:
       Verifique em um minuto se você tem direito a uma indenização:
     mobileImage: /img/hero-mobile.jpg
     type: jumbotron
-  - buttonLink: 'http://www.google.com'
+  - bgColor: '#fff'
+    buttonLink: 'http://www.google.com'
     buttonText: Quero ser indenizado
     description: São apenas 3 passos para você obter a sua indenização!
     feature:
@@ -39,6 +40,29 @@ sections:
         title: Receba a indenização
     header: Como a Processos Aéreos funciona?
     numberedFeatures: true
+    type: features
+  - bgColor: '#eee'
+    buttonLink: 'http://www.google.com'
+    buttonText: Quero ser indenizado
+    description: Veja abaixo
+    features:
+      - description: Voo Cancelado
+        image: /img/voo-cancelado.svg
+        title: Voo Cancelado
+      - description: Voo Atrasado
+        image: /img/voo-atrasado.svg
+        title: Voo Atrasado
+      - description: Conexão Perdida
+        image: /img/conexao-perdida.svg
+        title: Conexão Perdida
+      - description: Overbooking
+        image: /img/overbooking.svg
+        title: Overbooking
+      - description: Bagagem Extraviada
+        image: /img/bagagem-extraviada.svg
+        title: Bagagem Extraviada
+    header: QUE PROBLEMAS PODEM DAR DIREITO A UMA INDENIZAÇÃO?
+    numberedFeatures: false
     type: features
 ---
 
