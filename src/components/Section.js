@@ -56,12 +56,14 @@ const JumbotronContent = styled.div`
 `
 
 const Button = styled.a`
-  background-color: #f39;
-  color: #fff;
-  border-radius: 4px;
+  background-color: ${props =>
+    props.variant === "outlined" ? "#fff" : "#f39"};
+  color: ${props => (props.variant === "outlined" ? "#f39" : "#fff")};
+  border: 1px solid #f39;
+  border-radius: ${props => (props.variant === "outlined" ? "30px" : "4px")};
   padding: 15px 20px;
-  border: none;
   cursor: pointer;
+  box-shadow: none;
 `
 
 const MobileImage = styled.img`
@@ -72,6 +74,11 @@ const MobileImage = styled.img`
 `
 
 const FeaturesWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+
   h3 {
     text-align: center;
     font-weight: 500;
@@ -171,6 +178,9 @@ const Section = props => {
             </Feature>
           ))}
         </Features>
+        <Button variant={"outlined"} href={props.buttonLink}>
+          {props.buttonText}
+        </Button>
       </FeaturesWrapper>
     )
   } else {
