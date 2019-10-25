@@ -62,7 +62,7 @@ sections:
         image: /img/bagagem-extraviada.svg
         title: ''
     header: QUE PROBLEMAS PODEM DAR DIREITO A UMA INDENIZAÇÃO?
-    imageHeight: 100px
+    imageHeight: 70px
     numberedFeatures: false
     type: features
 ---
