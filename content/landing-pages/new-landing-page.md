@@ -48,19 +48,19 @@ sections:
     features:
       - description: Voo Cancelado
         image: /img/voo-cancelado.svg
-        title: Voo Cancelado
+        title: ''
       - description: Voo Atrasado
         image: /img/voo-atrasado.svg
-        title: Voo Atrasado
+        title: ''
       - description: Conexão Perdida
         image: /img/conexao-perdida.svg
-        title: Conexão Perdida
+        title: ''
       - description: Overbooking
         image: /img/overbooking.svg
-        title: Overbooking
+        title: ''
       - description: Bagagem Extraviada
         image: /img/bagagem-extraviada.svg
-        title: Bagagem Extraviada
+        title: ''
     header: QUE PROBLEMAS PODEM DAR DIREITO A UMA INDENIZAÇÃO?
     numberedFeatures: false
     type: features
