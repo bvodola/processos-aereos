@@ -345,7 +345,7 @@ class Chat extends React.Component {
                   <Message key={`typing${i}`} type="received">
                     <img
                       style={{ width: "50px", margin: "-20px 0" }}
-                      src="img/typing.gif"
+                      src="/img/typing.gif"
                       alt=""
                     />
                   </Message>

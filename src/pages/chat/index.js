@@ -169,7 +169,7 @@ export default () => (
       logoHref: "http://indenizamais.com.br/landing/dpvat/1",
       whatsapp: "11963197881",
     }}
-    messageInterval={100}
+    messageInterval={1000}
     messageDatabase={messageDatabase}
     avatarSrc={"/img/victor.jpg"}
   />
