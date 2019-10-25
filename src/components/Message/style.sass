@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
+.message-wrapper
+  display: flex
+  width: 100%
+
+  .placeholder
+    position: relative
+    flex-shrink: 0
+    width: 64px
+    height: 64px
+    margin-right: 24px
+
+  .avatar
+    position: relative
+    background-image: url('/static/img/douglas.jpg')
+    flex-shrink: 0
+    width: 64px
+    height: 64px
+    background-size: 100%
+    border-radius: 50px
+    margin-right: 24px
+
+.message-content
+  position: relative
+  margin-bottom: 20px
+  display: flex
+  flex-basis: 100%
+
+  .message-received
+    padding: 24px
+    box-shadow: -3px 3px 5px 0.01px hsla(0,0%,79%,.4)
+    border-radius: 8px
+    background: #fff
+    max-width: 80%
+    font-family: 'Ubuntu', sans-serif
+
+    @media(max-width: 1000px)
+      padding: 16px
+    @media(max-width: 700px)
+      max-width: 90%
+
+  .message-received:after
+    position: absolute
+    display: block
+    top: 15px
+    left: -10px
+    width: 20px
+    height: 20px
+    background-color: #fff
+    box-shadow: -3px 3px 5px 0.01px hsla(0,0%,79%,.4)
+    content: "\A0"
+    transform: rotate(45deg)
+    -moz-transform: rotate(45deg)
+    -ms-transform: rotate(45deg)
+    -o-transform: rotate(45deg)
+    -webkit-transform: rotate(45deg)
+    z-index: 0
+    
+  .message-sent
+    margin-left: auto
+    padding: 24px
+    box-shadow: 0 3px 6px 0 hsla(0,0%,79%,.5)
+    border-radius: 8px
+    background-color: #b2daf2
+    max-width: 80%
+    font-family: 'Ubuntu', sans-serif
+
+    @media(max-width: 1000px)
+      padding: 16px
+    @media(max-width: 700px)
+      max-width: 90%
+
+  .message-sent:after
+    position: absolute
+    display: block
+    right: 15px
+    bottom: -7px
+    background-color: #b2daf2
+    box-shadow: 0 3px 6px 0 hsla(0,0%,79%,.5)
+    content: "\A0"
+    height: 20px
+    width: 20px
+    transform: rotate(45deg)
+    -moz-transform: rotate(45deg)
+    -ms-transform: rotate(45deg)
+    -o-transform: rotate(45deg)
+    -webkit-transform: rotate(-45deg)
+    z-index: 0
+
+.message-form
+  display: flex
+  margin-bottom: 20px
+  margin-left: 88px
+  font-family: 'Ubuntu', sans-serif
+
+  .answer-again
+    display: inline
+    float: left
+    text-align: right
+    cursor: pointer
+    font-size: 14px
+    color: #666
+    font-style: italic
+    width: 100%
+
+    @media(max-width: 700px)
+      float: right
+
+  form
+    display: flex
+
+  input[type=text], input[type=tel], input[type=number]
+    box-shadow: 0 3px 6px 0 hsla(0,0%,79%,.5)
+    border-radius: 8px
+    border: 1px solid #fafafa
+    height: 48px
+    padding: 24px
+    font-size: 16px
+    width: 100%
+    outline: none
+    font-family: 'Ubuntu', sans-serif
+
+  button
+    background-color: #ef8800
+    border: none
+    padding: 16px
+    color: #fff
+    font-weight: bold
+    border-radius: 8px
+    outline: none
+    cursor: pointer
+    text-transform: uppercase
+    margin: 0 8px 8px 0
+    font-family: 'Ubuntu', sans-serif
+
+  button[type='submit']
+    margin: 1px 4px 0 4px
+    height: 48px
+    font-family: 'Ubuntu', sans-serif

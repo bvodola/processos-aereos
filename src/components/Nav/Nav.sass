@@ -1,0 +1,48 @@
+nav
+  position: fixed
+  border-bottom: 1px solid #eee
+  top: 0
+  left: 0
+  width: 100%
+  height: 60px
+  padding: 0 60px
+  background: rgba(255,255,255,0.9)
+  display: flex
+  justify-content: space-between
+  align-items: center
+  z-index: 1
+  font-family: 'Ubuntu', sans-serif
+
+  img
+    margin: 0
+
+  @media(max-width: 700px)
+    padding: 0 20px
+
+  .brand 
+    .logo
+      width: 200px
+      cursor: pointer
+
+      @media(max-width: 700px)
+        width: 150px
+
+  .contact
+    margin-top: -6px
+    display: flex
+
+    @media(max-width: 700px)
+      font-size: 14px
+
+    .phone
+      margin-right: 10px
+
+    .divider
+      color: #aaa
+      margin-right: 10px
+
+    a
+      box-shadow: none
+      .whatsapp
+        width: 25px
+        height: 25px
