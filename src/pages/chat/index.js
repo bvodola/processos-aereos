@@ -5,7 +5,7 @@ const received = (messages, firstMessageId = null) =>
   messages.map((content, i) => ({
     type: "received",
     content,
-    id: i == 0 ? firstMessageId : null,
+    id: i === 0 ? firstMessageId : null,
   }))
 const sent = (messages, firstMessageId) =>
   messages.map((content, i) => ({
@@ -57,6 +57,7 @@ const messageDatabase = [
   ...received([
     "Olá, {name}. Meu nome é Victor. Sou consultor especialista em DPVAT",
     "Vou te ajudar a receber a indenização DPVAT. Mas primeiro preciso entender um pouco sobre seu caso.",
+    "Lembre-se de que a qualquer momento você apertar o ícone do Whatsapp acima e conversar comigo por lá.",
   ]),
 
   ...question("Quando ocorreu o acidente?", "accident_date", [
