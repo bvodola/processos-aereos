@@ -42,6 +42,8 @@ export const pageQuery = graphql`
           mobileImage
           description
           type
+          imageHeight
+          bgColor
           features {
             image
             title

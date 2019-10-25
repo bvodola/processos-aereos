@@ -74,10 +74,14 @@ const MobileImage = styled.img`
 `
 
 const FeaturesWrapper = styled.div`
+  background-color: ${props => props.bgColor || "#fff"};
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
+  margin: 0 -20px;
+  margin-top: 30px;
+  padding: 40px 20px;
+}
 
   h3 {
     text-align: center;
@@ -100,14 +104,14 @@ const Features = styled.div`
 
   @media (min-width: 700px) {
     flex-direction: row;
-    padding: 0 5%;
+    padding: 0 ${props => 15 / props.numberOfFeatures}%;
     > * {
       width: ${props => `calc( ${100 / props.numberOfFeatures}% - 40px )`};
     }
   }
 
   @media (min-width: 1200px) {
-    padding: 0 20%;
+    padding: 0 ${props => 60 / props.numberOfFeatures}%;
   }
 `
 
@@ -119,7 +123,7 @@ const Feature = styled.div`
   text-align: center;
 
   img {
-    width: 100px;
+    height: ${props => props.imageHeight || "100px"};
     margin: 10px;
   }
 
@@ -165,22 +169,25 @@ const Section = props => {
     // Features
     // ========
     return (
-      <FeaturesWrapper>
+      <FeaturesWrapper bgColor={props.bgColor}>
         <h3>{props.header}</h3>
         <p className="description">{props.description}</p>
         <Features numberOfFeatures={props.features.length}>
           {props.features.map((feature, i) => (
-            <Feature key={feature.title}>
-              <Counter>{props.numberedFeatures && String(i + 1)}</Counter>
+            <Feature key={feature.title} imageHeight={props.imageHeight}>
+              {props.numberedFeatures && <Counter>{String(i + 1)}</Counter>}
               <img src={feature.image} alt="" />
               <h2>{feature.title}</h2>
               <p>{feature.description}</p>
             </Feature>
           ))}
         </Features>
-        <Button variant={"outlined"} href={props.buttonLink}>
-          {props.buttonText}
-        </Button>
+
+        {props.buttonText && (
+          <Button variant={"outlined"} href={props.buttonLink}>
+            {props.buttonText}
+          </Button>
+        )}
       </FeaturesWrapper>
     )
   } else {
