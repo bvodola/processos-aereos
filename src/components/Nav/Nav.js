@@ -16,7 +16,7 @@ export default ({ logo, logoHref, phone, whatsapp, ...props }) => (
           target="_blank"
           href={`http://api.whatsapp.com/send?phone=55${whatsapp}`}
         >
-          <img className="whatsapp" src="img/whatsapp.png" alt="" />
+          <img className="whatsapp" src="/img/whatsapp.png" alt="" />
         </a>
       )}
     </div>
