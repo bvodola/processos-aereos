@@ -310,9 +310,7 @@ class Chat extends React.Component {
       <div className="chat">
         <span className="background"></span>
         <Nav
-          logo={
-            "http://www.indenizamais.com.br/wp-content/themes/indeniza/img/Indeniza%20Mais.png"
-          }
+          logo={"img/logo-indeniza-mais.png"}
           phone={"(11) 4712-9278"}
           whatsapp={"11999668246"}
           {...nav}
