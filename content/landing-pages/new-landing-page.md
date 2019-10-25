@@ -42,8 +42,8 @@ sections:
     numberedFeatures: true
     type: features
   - bgColor: '#eee'
-    buttonLink: 'http://www.google.com'
-    buttonText: Quero ser indenizado
+    buttonLink: ''
+    buttonText: ''
     description: ''
     features:
       - description: Voo Cancelado
