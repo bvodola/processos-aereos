@@ -44,7 +44,7 @@ sections:
   - bgColor: '#eee'
     buttonLink: 'http://www.google.com'
     buttonText: Quero ser indenizado
-    description: Veja abaixo
+    description: ''
     features:
       - description: Voo Cancelado
         image: /img/voo-cancelado.svg
