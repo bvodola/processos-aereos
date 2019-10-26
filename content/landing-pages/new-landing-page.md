@@ -65,7 +65,7 @@ sections:
     imageHeight: 70px
     numberedFeatures: false
     type: features
-  - grid: 3
+  - grid: 2
     type: grid
   - textContent: >-
       **Você se encaixa em alguma dessas situações?**
