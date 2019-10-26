@@ -65,7 +65,11 @@ sections:
     imageHeight: 70px
     numberedFeatures: false
     type: features
-  - grid: 2
+  - bgColor: '#fff'
+    grid: 2
+    gridSize: 2
+    lgPadding: 20px 20%
+    mdPadding: 20px 10%
     type: grid
   - textContent: >-
       **Você se encaixa em alguma dessas situações?**
