@@ -67,9 +67,40 @@ sections:
     type: features
   - grid: 3
     type: grid
-  - textContent: Primeira coluna
+  - textContent: >-
+      **Você se encaixa em alguma dessas situações?**
+
+
+      * Sofreu acidente de trânsito?
+
+      * Passou por alguma cirurgia depois do acidente?
+
+      * Ficou com algum tipo de sequela?
+
+
+      Se você respondeu sim a pelo menos uma dessas perguntas, é um forte
+      candidato a receber a indenização.
+
+
+      **Porque falar com a IndenizaMais?**
+
+
+      * Assessores especializados
+
+      * Dê entrada sem sair de casa
+
+      * Acompanhe seu processo pelo celular
     type: textEditor
-  - textContent: Segunda coluna
+  - textContent: >-
+      # Você foi vítima de acidente de trânsito? Fez cirurgia ou ficou com
+      sequelas?
+
+
+      ## Receba até R$13.500 do Seguro DPVAT!
+
+
+      Solicite orientação gratuita de nossa equipe e descubra se você tem
+      direito a receber indenização do seguro DPVAT.
     type: textEditor
 ---
 
