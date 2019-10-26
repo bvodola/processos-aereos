@@ -65,5 +65,11 @@ sections:
     imageHeight: 70px
     numberedFeatures: false
     type: features
+  - grid: 3
+    type: grid
+  - textContent: Primeira coluna
+    type: textEditor
+  - textContent: Segunda coluna
+    type: textEditor
 ---
 
