@@ -3,11 +3,11 @@ templateKey: landing-page
 title: New landing page
 sections:
   - buttonText: Verificar grátis
-    desktopImage: /img/hero-desktop.jpg
+    desktopImage: /img/3241-50.jpg
     header: |-
-      # Reivindique uma **indenização** ‍pelo seu voo
+      # Resolvemos seu problema de tecnologia
 
-      Verifique em um minuto se você tem direito a uma indenização:
+      Verifique em um minuto como nós podemos ajudar você
     mobileImage: /img/hero-mobile.jpg
     type: jumbotron
   - bgColor: '#fff'
