@@ -113,3 +113,43 @@ collections:
                       widget: string,
                       required: false,
                     }
+          #GRID
+          - label: "Grid"
+            name: "grid"
+            widget: object
+            fields:
+              - {
+                  label: "Grid Size",
+                  name: "gridSize",
+                  widget: number,
+                  valueType: int,
+                  default: 2,
+                }
+              - {
+                  label: "Large Screen Padding",
+                  name: "lgPadding",
+                  widget: string,
+                  default: "",
+                  required: false,
+                }
+              - {
+                  label: "Medium Screen Padding",
+                  name: "mdPadding",
+                  widget: string,
+                  default: "",
+                  required: false,
+                }
+              - {
+                  label: "Background Color",
+                  name: "bgColor",
+                  widget: string,
+                  default: "#fff",
+                  required: false,
+                }
+
+          #MARKDOWN
+          - label: "Text Editor"
+            name: "textEditor"
+            widget: object
+            fields:
+              - { label: "Text Content", name: "textContent", widget: markdown }

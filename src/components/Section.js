@@ -148,6 +148,23 @@ const Counter = styled.div`
   align-items: center;
 `
 
+const Grid = styled.div`
+  margin: 0 -20px;
+  padding: 20px;
+  background-color: ${props => props.bgColor};
+  @media (min-width: 700px) {
+    display: flex;
+    flex-direction: row;
+    padding: ${props => props.mdPadding};
+    > * {
+      width: ${props => `calc( ${100 / props.gridSize}% )`};
+    }
+  }
+  @media (min-width: 1200px) {
+    padding: ${props => props.lgPadding};
+  }
+`
+
 const Section = props => {
   const { type } = props
 
@@ -174,7 +191,7 @@ const Section = props => {
         <p className="description">{props.description}</p>
         <Features numberOfFeatures={props.features.length}>
           {props.features.map((feature, i) => (
-            <Feature key={feature.title} imageHeight={props.imageHeight}>
+            <Feature key={i} imageHeight={props.imageHeight}>
               {props.numberedFeatures && <Counter>{String(i + 1)}</Counter>}
               <img src={feature.image} alt="" />
               <h2>{feature.title}</h2>
@@ -190,6 +207,41 @@ const Section = props => {
         )}
       </FeaturesWrapper>
     )
+  } else if (type === "grid") {
+    // ====
+    // GRID
+    // ====
+    return (
+      <Grid
+        gridSize={props.gridSize}
+        lgPadding={props.lgPadding}
+        mdPadding={props.mdPadding}
+        bgColor={props.bgColor}
+      >
+        {props.gridSections.map(section => (
+          <Section
+            key={Math.random()
+              .toString(36)
+              .substring(7)}
+            {...section}
+          />
+        ))}
+      </Grid>
+    )
+  } else if (type === "textEditor") {
+    // ====
+    // TEXT
+    // ====
+    return (
+      <div style={{ margin: "20px" }}>
+        <Markdown source={props.textContent} />
+      </div>
+    )
+  } else if (type === "empty") {
+    // =====
+    // EMPTY
+    // =====
+    return <div>&nbsp;</div>
   } else {
     // ================
     // No section found
