@@ -4,6 +4,7 @@ title: New landing page
 sections:
   - buttonColor: '#ec9314'
     buttonText: Quero verificar agora
+    customCSS: 'border-bottom: none;'
     desktopImage: /img/plane-bg.jpg
     header: |-
       # Seja indenizado pelo seu vôo
