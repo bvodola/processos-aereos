@@ -2,7 +2,8 @@
 templateKey: landing-page
 title: New landing page
 sections:
-  - buttonText: Verificar grátis
+  - buttonColor: '#ec9314'
+    buttonText: Verificar grátis
     desktopImage: /img/plane-bg.jpg
     header: |-
       # Resolvemos seu problema de tecnologia
