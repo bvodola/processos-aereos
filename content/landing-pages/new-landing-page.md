@@ -67,7 +67,8 @@ sections:
     imageHeight: 70px
     numberedFeatures: false
     type: features
-  - textContent: '# Perguntas Frequentes'
+  - customCSS: 'text-align: center;'
+    textContent: '# Perguntas Frequentes'
     type: textEditor
   - bgColor: '#fff'
     grid: 2
