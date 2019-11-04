@@ -1,9 +1,12 @@
 import React from "react"
 import Section from "../components/Section"
 import styled from "styled-components"
+import Nav from "../components/Nav/Nav"
 
 const Layout = styled.div`
   margin: 0 20px;
+  padding-top: 59px;
+
   * {
     box-sizing: border-box;
     font-family: Montserrat;
@@ -52,6 +55,7 @@ export default props => {
 
   return (
     <Layout>
+      <Nav />
       {sections &&
         sections.map((section, i) => (
           <Section
@@ -79,7 +83,10 @@ export const pageQuery = graphql`
       frontmatter {
         title
         sections {
+          customCSS
           buttonText
+          buttonColor
+          buttonLink
           desktopImage
           header
           mobileImage

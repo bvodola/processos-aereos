@@ -13,8 +13,9 @@ const sent = (messages, firstMessageId) =>
     content,
     id: i == 0 ? firstMessageId : null,
   }))
-const question = (content, name, options) => [
+const question = (content, name, options, messageId = null) => [
   {
+    id: messageId,
     type: "received",
     content,
   },
@@ -33,8 +34,8 @@ const question = (content, name, options) => [
     content: `{${name}}`,
   },
 ]
-const yesOrNoQuestion = (content, name) =>
-  question(content, name, ["Sim", "Não"])
+const yesOrNoQuestion = (content, name, messageId) =>
+  question(content, name, ["Sim", "Não"], messageId)
 
 const _if = name => [
   {
@@ -42,6 +43,14 @@ const _if = name => [
     name,
   },
 ]
+
+const _switch = name => [
+  {
+    type: "if",
+    name,
+  },
+]
+
 const _skip = (skip_id, id) => [
   {
     type: "skip",
@@ -55,102 +64,37 @@ const messageDatabase = [
   // Intro
   // =====
   ...received([
-    "Olá, {name}. Meu nome é Victor. Sou consultor especialista em DPVAT",
-    "Vou te ajudar a receber a indenização DPVAT. Mas primeiro preciso entender um pouco sobre seu caso.",
+    "Olá, {name}. Meu nome é Victor. Sou consultor especialista em processos aéreos",
+    "Vou te ajudar a receber sua indenização. Mas primeiro preciso entender um pouco sobre seu caso.",
     "Lembre-se de que a qualquer momento você apertar o ícone do Whatsapp acima e conversar comigo por lá.",
   ]),
 
-  ...question("Quando ocorreu o acidente?", "accident_date", [
-    "Há menos de 3 anos",
-    "3 anos ou mais",
-  ]),
-  ...yesOrNoQuestion(
-    "Certo. Você tem o boletim de ocorrência (BO) do acidente?",
-    "bo"
-  ),
-  ...yesOrNoQuestion("A vítima faleceu devido ao acidente?", "deceased"),
-  ..._if("deceased"),
-
-  // ==============
-  // Casos de Morte
-  // ==============
-  ...received(
-    [
-      "Certo. Primeiramente, meus sentimentos pela perda, {name}.",
-      "Nos casos de morte, o DPVAT paga R$ 13.500 para os familiares da vítima.",
-    ],
-    "deceased_Sim"
-  ),
-  ...yesOrNoQuestion(
-    "Você tem em mãos a certidão de óbito?",
-    "death_certificate"
-  ),
-  ...yesOrNoQuestion("A vítima era casada no papel?", "married"),
-  ...yesOrNoQuestion("Tinha filhos?", "children"),
-  ..._skip("secondary"),
-
-  // =========
-  // Invalidez
-  // =========
-  ..._skip("injury", "deceased_Não"),
-  ...received(
-    [
-      "Nesse caso, o DPVAT paga até R$ 13.500 para a vítima, de acordo com a lesão.",
-    ],
-    "injury"
-  ),
-
-  ...yesOrNoQuestion("A vítima teve de fazer cirurgia?", "surgery"),
-  ...yesOrNoQuestion(
-    "Você tem em mãos os laudos médicos do tratamento?",
-    "medical"
-  ),
-  ..._skip("secondary"),
-
-  // Secundárias
-  ...received(
-    ["Entendo. Preciso de apenas mais duas informações, {name}."],
-    "secondary"
-  ),
-  ...yesOrNoQuestion("O veículo estava em nome da vítima?", "victim_is_owner"),
-  ...question("No acidente, a vítima era", "victim_type", [
-    "Motorista",
-    "Passageiro",
-    "Pedestre",
+  ...question("O que aconteceu com seu voo?", "issue", [
+    "Atrasou",
+    "Foi cancelado",
+    "Bagagem extraviada",
+    "Overbooking",
   ]),
 
-  {
-    type: "received",
-    content:
-      "Obrigado! Gostaria de continuar a conversar por Whatsapp ou prefere receber uma ligação nossa?",
-  },
-  {
-    type: "form",
-    fields: [
-      {
-        type: "options",
-        name: "contact_preference",
-        options: ["Continuar por Whatsapp", "Quero receber uma ligação"],
-      },
+  ..._switch("issue"),
+  ...yesOrNoQuestion(
+    "Seu voo aconteceu a menos de 5 anos?",
+    "lessThanFiveYears",
+    "issue_Atrasou"
+  ),
+
+  ..._switch("lessThanFiveYears"),
+  ..._skip("noRights", "lessThanFiveYears_Não"),
+  ..._skip("final", "lessThanFiveYears_Sim"),
+
+  ...received(
+    [
+      "Infelizmente, nesse caso você não tem direito.",
+      "Se restou alguma dúvida, você pode apertar o ícone do Whatsapp acima e conversar comigo por lá.",
     ],
-  },
-  {
-    type: "sent",
-    content: "{contact_preference}",
-  },
-  {
-    type: "if",
-    name: "contact_preference",
-  },
-  {
-    id: "contact_preference_Quero receber uma ligação",
-    type: "received",
-    content: "Ok. Ligaremos o mais rápido possível no {phone}",
-  },
-  {
-    type: "skip",
-    skip_id: "final",
-  },
+    "noRights"
+  ),
+
   {
     id: "contact_preference_Continuar por Whatsapp",
     type: "redirect",

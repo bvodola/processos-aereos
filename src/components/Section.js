@@ -1,76 +1,19 @@
 import React from "react"
 import styled from "styled-components"
 import Markdown from "react-markdown"
-
-const Jumbotron = styled.div`
-  margin: 0 -20px;
-
-  @media (min-width: 700px) {
-    background-image: url(${props => props.backgroundImage});
-    background-size: contain;
-    background-position: center right;
-    background-repeat: no-repeat;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    padding: 36px;
-
-    h1 {
-      font-size: 2.5rem;
-      margin-top: 30px;
-    }
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    margin-top: 10px;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  @media (max-width: 900px) {
-    background-size: cover;
-  }
-`
-
-const JumbotronContent = styled.div`
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 4px;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-
-  @media (min-width: 700px) {
-    width: 45%;
-    text-align: left;
-    align-items: flex-start;
-  }
-  @media (min-width: 900px) {
-    width: 35%;
-  
-`
-
-const Button = styled.a`
-  background-color: ${props =>
-    props.variant === "outlined" ? "#fff" : "#f39"};
-  color: ${props => (props.variant === "outlined" ? "#f39" : "#fff")};
-  border: 1px solid #f39;
-  border-radius: ${props => (props.variant === "outlined" ? "30px" : "4px")};
-  padding: 15px 20px;
-  cursor: pointer;
-  box-shadow: none;
-`
+import Jumbotron, { JumbotronContent } from "./Jumbotron/Jumbotron"
+import Button from "./Button/Button"
 
 const MobileImage = styled.img`
   width: 200px;
   @media (min-width: 700px) {
     display: none;
   }
+`
+
+const Text = styled.div`
+  margin: 20px;
+  ${props => props.customCSS}
 `
 
 const FeaturesWrapper = styled.div`
@@ -173,11 +116,16 @@ const Section = props => {
     // Jumbotron
     // =========
     return (
-      <Jumbotron backgroundImage={props.desktopImage}>
-        <JumbotronContent>
-          {props.mobileImage && <MobileImage src={props.mobileImage} alt="" />}
+      <Jumbotron
+        customCSS={props.customCSS}
+        backgroundImage={props.desktopImage}
+        className="jumbotron"
+      >
+        <JumbotronContent className="jumbotron-content">
           <Markdown source={props.header} />
-          <Button>{props.buttonText}</Button>
+          <Button href={props.buttonLink} buttonColor={props.buttonColor}>
+            {props.buttonText}
+          </Button>
         </JumbotronContent>
       </Jumbotron>
     )
@@ -232,10 +180,11 @@ const Section = props => {
     // ====
     // TEXT
     // ====
+    console.log(props.textContent)
     return (
-      <div style={{ margin: "20px" }}>
+      <Text customCSS={props.customCSS}>
         <Markdown source={props.textContent} />
-      </div>
+      </Text>
     )
   } else if (type === "empty") {
     // =====

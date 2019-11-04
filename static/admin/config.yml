@@ -50,9 +50,31 @@ collections:
             widget: object
             fields:
               - { label: Header, name: header, widget: markdown }
-              - { label: Button Text, name: buttonText, widget: string }
-              - { label: "Deskotp Image", name: desktopImage, widget: image }
-              - { label: "Mobile Image", name: mobileImage, widget: image }
+              - {
+                  label: Button Text,
+                  name: buttonText,
+                  widget: string,
+                  required: false,
+                }
+              - {
+                  label: Button Color,
+                  name: buttonColor,
+                  widget: string,
+                  required: false,
+                }
+              - {
+                  label: Button Link,
+                  name: buttonLink,
+                  widget: string,
+                  required: false,
+                }
+              - { label: "Background Image", name: desktopImage, widget: image }
+              - {
+                  label: "Custom CSS",
+                  name: customCSS,
+                  widget: text,
+                  required: false,
+                }
 
           #FEATURES
           - label: "Features"
@@ -153,3 +175,9 @@ collections:
             widget: object
             fields:
               - { label: "Text Content", name: "textContent", widget: markdown }
+              - {
+                  label: "Custom CSS",
+                  name: customCSS,
+                  widget: text,
+                  required: false,
+                }
