@@ -77,21 +77,21 @@ sections:
     type: grid
   - textContent: >-
       **Se eu tiver ganho a passagem, de presente por exemplo, ainda assim terei
-      direito a uma indenização?**\
+      direito a uma indenização?** \
 
       Sim. A indenização, desde que preenchidos os requisitos legais, é devida
       ao(à) passageiro(a) que enfrentou o problema que, no caso de uma viagem
       dada de presente, não será a mesma pessoa que comprou a passagem aérea.
 
 
-      **Como faço para saber o andamento da minha reclamação?**\
+      **Como faço para saber o andamento da minha reclamação?** \
 
       Basta entrar conosco que te passaremos o andamento atual da sua
       reclamação. Além disso, sempre que tivermos alguma atualização importante,
       informaremos você sobre essa atualização.
 
 
-      **Qual o valor da indenização que terei direito de receber?**\
+      **Qual o valor da indenização que terei direito de receber?** \
 
       Como não existe um critério objetivo na lei, dependerá muito de cada
       situação ocorrida. Mas a média de valores de indenizações por danos
