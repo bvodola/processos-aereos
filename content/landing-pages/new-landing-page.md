@@ -77,7 +77,9 @@ sections:
     type: grid
   - textContent: >-
       **Se eu tiver ganho a passagem, de presente por exemplo, ainda assim terei
-      direito a uma indenização?** \
+      direito a uma indenização?**\
+
+      \
 
       Sim. A indenização, desde que preenchidos os requisitos legais, é devida
       ao(à) passageiro(a) que enfrentou o problema que, no caso de uma viagem
