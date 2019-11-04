@@ -77,23 +77,24 @@ sections:
     type: grid
   - textContent: >-
       **Se eu tiver ganho a passagem, de presente por exemplo, ainda assim terei
-      direito a uma indenização?**\
+      direito a uma indenização?**
 
-      \
 
       Sim. A indenização, desde que preenchidos os requisitos legais, é devida
       ao(à) passageiro(a) que enfrentou o problema que, no caso de uma viagem
       dada de presente, não será a mesma pessoa que comprou a passagem aérea.
 
 
-      **Como faço para saber o andamento da minha reclamação?** \
+      **Como faço para saber o andamento da minha reclamação?**
+
 
       Basta entrar conosco que te passaremos o andamento atual da sua
       reclamação. Além disso, sempre que tivermos alguma atualização importante,
       informaremos você sobre essa atualização.
 
 
-      **Qual o valor da indenização que terei direito de receber?** \
+      **Qual o valor da indenização que terei direito de receber?**
+
 
       Como não existe um critério objetivo na lei, dependerá muito de cada
       situação ocorrida. Mas a média de valores de indenizações por danos
@@ -101,7 +102,8 @@ sections:
       (cinco mil reais).
     type: textEditor
   - textContent: >-
-      **Quanto tempo demora para eu receber o valor da indenização?**\
+      **Quanto tempo demora para eu receber o valor da indenização?**
+
 
       A situação vivenciada por você poderá ser resolvida de forma amigável ou,
       caso não seja possível, será necessário ingressar com uma ação judicial,
@@ -110,14 +112,16 @@ sections:
       que em até 01 (um) ano, você já receba o valor da sua indenização.
 
 
-      **Como e quando que a Indenizando recebe?**\
+      **Como e quando que a Indenizando recebe?**
+
 
       Nós somente recebemos quando você receber, sendo que nossa taxa é de 30%
       (trinta) por cento sobre o valor final recebido por você.
 
 
       **E o que acontece se eu não ganhar a ação? Terei que pagar alguma
-      coisa?**\
+      coisa?**
+
 
       Você não terá nenhum risco ao entregar seu caso aos nossos cuidados. E se
       por algum motivo não conseguirmos sua indenização, você não terá nenhum
