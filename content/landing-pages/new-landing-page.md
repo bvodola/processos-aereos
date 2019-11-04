@@ -3,13 +3,13 @@ templateKey: landing-page
 title: New landing page
 sections:
   - buttonColor: '#ec9314'
-    buttonText: Verificar grátis
+    buttonText: Quero verificar agora
     desktopImage: /img/plane-bg.jpg
     header: |-
-      # Resolvemos seu problema de tecnologia
+      # Seja indenizado pelo seu vôo
 
       Verifique em um minuto como nós podemos ajudar você
-    mobileImage: /img/hero-mobile.jpg
+    mobileImage: /img/airplane-ticket.png
     type: jumbotron
   - bgColor: '#fff'
     buttonLink: 'http://www.google.com'
