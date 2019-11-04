@@ -67,6 +67,8 @@ sections:
     imageHeight: 70px
     numberedFeatures: false
     type: features
+  - textContent: '# Perguntas Frequentes'
+    type: textEditor
   - bgColor: '#fff'
     grid: 2
     gridSize: 2
@@ -74,39 +76,50 @@ sections:
     mdPadding: 20px 10%
     type: grid
   - textContent: >-
-      **Você se encaixa em alguma dessas situações?**
+      **Se eu tiver ganho a passagem, de presente por exemplo, ainda assim terei
+      direito a uma indenização?**\
+
+      Sim. A indenização, desde que preenchidos os requisitos legais, é devida
+      ao(à) passageiro(a) que enfrentou o problema que, no caso de uma viagem
+      dada de presente, não será a mesma pessoa que comprou a passagem aérea.
 
 
-      * Sofreu acidente de trânsito?
+      **Como faço para saber o andamento da minha reclamação?**\
 
-      * Passou por alguma cirurgia depois do acidente?
-
-      * Ficou com algum tipo de sequela?
-
-
-      Se você respondeu sim a pelo menos uma dessas perguntas, é um forte
-      candidato a receber a indenização.
+      Basta entrar conosco que te passaremos o andamento atual da sua
+      reclamação. Além disso, sempre que tivermos alguma atualização importante,
+      informaremos você sobre essa atualização.
 
 
-      **Porque falar com a IndenizaMais?**
+      **Qual o valor da indenização que terei direito de receber?**\
 
-
-      * Assessores especializados
-
-      * Dê entrada sem sair de casa
-
-      * Acompanhe seu processo pelo celular
+      Como não existe um critério objetivo na lei, dependerá muito de cada
+      situação ocorrida. Mas a média de valores de indenizações por danos
+      moraisenvolvendo problemas em viagens aéreas está em torno de R$ 5.000,00
+      (cinco mil reais).
     type: textEditor
   - textContent: >-
-      # Você foi vítima de acidente de trânsito? Fez cirurgia ou ficou com
-      sequelas?
+      **Quanto tempo demora para eu receber o valor da indenização?**\
+
+      A situação vivenciada por você poderá ser resolvida de forma amigável ou,
+      caso não seja possível, será necessário ingressar com uma ação judicial,
+      quando encaminharemos o caso para algum advogado ou escritório parceiro.Em
+      razão disto, não é possível precisarmos um tempo exato. Mas a média é de
+      que em até 01 (um) ano, você já receba o valor da sua indenização.
 
 
-      ## Receba até R$13.500 do Seguro DPVAT!
+      **Como e quando que a Indenizando recebe?**\
+
+      Nós somente recebemos quando você receber, sendo que nossa taxa é de 30%
+      (trinta) por cento sobre o valor final recebido por você.
 
 
-      Solicite orientação gratuita de nossa equipe e descubra se você tem
-      direito a receber indenização do seguro DPVAT.
+      **E o que acontece se eu não ganhar a ação? Terei que pagar alguma
+      coisa?**\
+
+      Você não terá nenhum risco ao entregar seu caso aos nossos cuidados. E se
+      por algum motivo não conseguirmos sua indenização, você não terá nenhum
+      prejuízo financeiro.
     type: textEditor
 ---
 
