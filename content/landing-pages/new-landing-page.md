@@ -3,7 +3,7 @@ templateKey: landing-page
 title: New landing page
 sections:
   - buttonText: Verificar grátis
-    desktopImage: /img/3241-50.jpg
+    desktopImage: /img/plane-bg.jpg
     header: |-
       # Resolvemos seu problema de tecnologia
 
