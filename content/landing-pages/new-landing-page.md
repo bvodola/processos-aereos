@@ -4,7 +4,14 @@ title: New landing page
 sections:
   - buttonColor: '#ec9314'
     buttonText: Quero verificar agora
-    customCSS: 'border-bottom: none;'
+    customCSS: |-
+      border-bottom: none;
+
+      .jumbotron-content {
+        h1{
+            color: #46648d;
+          }
+      }
     desktopImage: /img/plane-bg.jpg
     header: |-
       # Seja indenizado pelo seu vôo
