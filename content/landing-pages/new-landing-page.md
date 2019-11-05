@@ -135,5 +135,9 @@ sections:
       por algum motivo não conseguirmos sua indenização, você não terá nenhum
       prejuízo financeiro.
     type: textEditor
+  - buttonText: Quero verificar
+    features: []
+    numberedFeatures: false
+    type: features
 ---
 
