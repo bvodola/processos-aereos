@@ -223,13 +223,21 @@ class Chat extends React.Component {
           currentMessage.content = currentMessage[formData[currentMessage.name]]
         } else {
           currentMessage = messageDatabase.find((msg, i) => {
-            if (msgId == msg.id) {
+            if (msgId === msg.id) {
               currentMessageIndex = i
               return true
             }
           })
         }
       }
+
+      if (currentMessage.type === "header") {
+        // If we have the header type, we just skip to the next message
+        currentMessageIndex = currentMessageIndex + 1
+        currentMessage = { ...messageDatabase[currentMessageIndex] }
+      }
+
+      console.log(currentMessage)
 
       currentMessage.key = currentMessageIndex
       const messages = [...this.state.messages, currentMessage]
@@ -239,7 +247,7 @@ class Chat extends React.Component {
 
       this.state.timeout = setTimeout(() => {
         if (currentMessage.type !== "form") this.sendQueuedMessages()
-      }, this.props.messageInterval || 100)
+      }, this.props.messageInterval || 1000)
     }
   }
 

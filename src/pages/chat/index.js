@@ -7,12 +7,14 @@ const received = (messages, firstMessageId = null) =>
     content,
     id: i === 0 ? firstMessageId : null,
   }))
+
 const sent = (messages, firstMessageId) =>
   messages.map((content, i) => ({
     type: "sent",
     content,
     id: i == 0 ? firstMessageId : null,
   }))
+
 const question = (content, name, options, messageId = null) => [
   {
     id: messageId,
@@ -51,7 +53,7 @@ const _switch = name => [
   },
 ]
 
-const _skip = (skip_id, id) => [
+const _skip = (skip_id, id = null) => [
   {
     type: "skip",
     skip_id,
@@ -69,43 +71,68 @@ const messageDatabase = [
     "Lembre-se de que a qualquer momento você apertar o ícone do Whatsapp acima e conversar comigo por lá.",
   ]),
 
-  ...question("O que aconteceu com seu voo?", "issue", [
+  ...question("O que aconteceu com seu voo?", "problema", [
     "Atrasou",
     "Foi cancelado",
     "Bagagem extraviada",
     "Overbooking",
   ]),
 
-  ..._switch("issue"),
-  ...yesOrNoQuestion(
-    "Seu voo aconteceu a menos de 5 anos?",
-    "lessThanFiveYears",
-    "issue_Atrasou"
-  ),
+  ..._switch("problema"),
 
-  ..._switch("lessThanFiveYears"),
-  ..._skip("noRights", "lessThanFiveYears_Não"),
-  ..._skip("final", "lessThanFiveYears_Sim"),
+  // Atrasou
+  {
+    type: "header",
+    id: "problema_Atrasou",
+  },
 
-  ...received(
-    [
-      "Infelizmente, nesse caso você não tem direito.",
-      "Se restou alguma dúvida, você pode apertar o ícone do Whatsapp acima e conversar comigo por lá.",
-    ],
-    "noRights"
-  ),
+  // Menos de 5 anos?
+  ...yesOrNoQuestion("Seu voo aconteceu a menos de 5 anos?", "menosDe5Anos"),
+  ..._switch("menosDe5Anos"),
+
+  // Menos de 5 anos: SIM
+  {
+    type: "header",
+    id: "menosDe5Anos_Sim",
+  },
+
+  // Mais de 4 horas?
+  ...yesOrNoQuestion("Seu voo atrasou mais do que 4 horas?", "maisDe4Horas"),
+
+  // Mais de 4 horas: SIM
+  {
+    type: "header",
+    id: "maisDe4Horas_Sim",
+  },
+  ..._skip("formularioLead"),
+
+  // Mais de 4 horas: NÃO
+  {
+    type: "header",
+    id: "maisDe4Horas_Não",
+  },
+
+  // Menos de 5 anos: NÃO
+  {
+    type: "header",
+    id: "menosDe5Anos_Não",
+  },
+  ..._skip("naoTemDireitos"),
 
   {
-    id: "contact_preference_Continuar por Whatsapp",
-    type: "redirect",
-    url: "http://api.whatsapp.com/send?phone=5511940728896",
+    type: "header",
+    id: "formularioLead",
   },
+  ...received(["Uhul!"]),
+
   {
-    id: "final",
-    type: "received",
-    content: "Obrigado pelo contato, {name}!",
-    last: true,
+    type: "header",
+    id: "naoTemDireitos",
   },
+  ...received([
+    "Infelizmente, nesse caso você não tem direito.",
+    "Se restou alguma dúvida, você pode apertar o ícone do Whatsapp acima e conversar comigo por lá.",
+  ]),
 ]
 
 export default () => (
@@ -114,7 +141,7 @@ export default () => (
       logoHref: "http://indenizamais.com.br/landing/dpvat/1",
       whatsapp: "11963197881",
     }}
-    messageInterval={1000}
+    messageInterval={1}
     messageDatabase={messageDatabase}
     avatarSrc={"/img/victor.jpg"}
   />
