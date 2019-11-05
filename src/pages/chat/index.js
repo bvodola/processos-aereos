@@ -1,65 +1,11 @@
 import React from "react"
-import Chat from "../../components/Chat"
-
-const received = (messages, firstMessageId = null) =>
-  messages.map((content, i) => ({
-    type: "received",
-    content,
-    id: i === 0 ? firstMessageId : null,
-  }))
-
-const sent = (messages, firstMessageId) =>
-  messages.map((content, i) => ({
-    type: "sent",
-    content,
-    id: i == 0 ? firstMessageId : null,
-  }))
-
-const question = (content, name, options, messageId = null) => [
-  {
-    id: messageId,
-    type: "received",
-    content,
-  },
-  {
-    type: "form",
-    fields: [
-      {
-        type: "options",
-        name,
-        options,
-      },
-    ],
-  },
-  {
-    type: "sent",
-    content: `{${name}}`,
-  },
-]
-const yesOrNoQuestion = (content, name, messageId) =>
-  question(content, name, ["Sim", "Não"], messageId)
-
-const _if = name => [
-  {
-    type: "if",
-    name,
-  },
-]
-
-const _switch = name => [
-  {
-    type: "if",
-    name,
-  },
-]
-
-const _skip = (skip_id, id = null) => [
-  {
-    type: "skip",
-    skip_id,
-    id,
-  },
-]
+import Chat, {
+  received,
+  question,
+  yesOrNoQuestion,
+  _switch,
+  _skip,
+} from "../../components/Chat/Chat"
 
 const messageDatabase = [
   // =====
@@ -71,6 +17,9 @@ const messageDatabase = [
     "Lembre-se de que a qualquer momento você apertar o ícone do Whatsapp acima e conversar comigo por lá.",
   ]),
 
+  // ==================
+  // Problema principal
+  // ==================
   ...question("O que aconteceu com seu voo?", "problema", [
     "Atrasou",
     "Foi cancelado",
@@ -78,17 +27,18 @@ const messageDatabase = [
     "Overbooking",
   ]),
 
-  ..._switch("problema"),
+  // ================
+  // Menos de 5 anos?
+  // ================
+  ...yesOrNoQuestion("Isso aconteceu a menos de 5 anos?", "menosDe5Anos"),
+  ..._switch("menosDe5Anos"),
 
-  // Atrasou
+  // Menos de 5 anos: NÃO
   {
     type: "header",
-    id: "problema_Atrasou",
+    id: "menosDe5Anos_Não",
   },
-
-  // Menos de 5 anos?
-  ...yesOrNoQuestion("Seu voo aconteceu a menos de 5 anos?", "menosDe5Anos"),
-  ..._switch("menosDe5Anos"),
+  ..._skip("naoTemDireitos"),
 
   // Menos de 5 anos: SIM
   {
@@ -96,8 +46,20 @@ const messageDatabase = [
     id: "menosDe5Anos_Sim",
   },
 
+  // Switch do problema principal
+  ..._switch("problema"),
+
+  // =======
+  // Atrasou
+  // =======
+  {
+    type: "header",
+    id: "problema_Atrasou",
+  },
+
   // Mais de 4 horas?
   ...yesOrNoQuestion("Seu voo atrasou mais do que 4 horas?", "maisDe4Horas"),
+  ..._switch("maisDe4Horas"),
 
   // Mais de 4 horas: SIM
   {
@@ -112,25 +74,187 @@ const messageDatabase = [
     id: "maisDe4Horas_Não",
   },
 
-  // Menos de 5 anos: NÃO
+  // Perdeu compromisso ou conexão?
+  ...yesOrNoQuestion(
+    "Você perdeu compromisso importante ou conexão por causa desse atraso?",
+    "perdeuCompromisso"
+  ),
+  ..._switch("perdeuCompromisso"),
+
   {
     type: "header",
-    id: "menosDe5Anos_Não",
+    id: "perdeuCompromisso_Sim",
+  },
+  ..._skip("formularioLead"),
+
+  {
+    type: "header",
+    id: "perdeuCompromisso_Não",
   },
   ..._skip("naoTemDireitos"),
 
+  // =============
+  // Foi Cancelado
+  // =============
+  {
+    type: "header",
+    id: "problema_Foi cancelado",
+  },
+  // Informado com mais de 72h?
+  ...yesOrNoQuestion(
+    "Você foi informado do cancelamento com menos de 72 horas de antecedência?",
+    "menosDe72Horas"
+  ),
+  ..._switch("menosDe72Horas"),
+
+  // Menos de 72 horas: SIM
+  {
+    type: "header",
+    id: "menosDe72Horas_Sim",
+  },
+  ..._skip("formularioLead"),
+
+  // Menos de 72 horas: NÃO
+  {
+    type: "header",
+    id: "menosDe72Horas_Não",
+  },
+  ..._skip("naoTemDireitos"),
+
+  // ==================
+  // Bagagem Extraviada
+  // ==================
+  {
+    type: "header",
+    id: "problema_Bagagem extraviada",
+  },
+  // Tipo de Voo?
+  ...question("Era um voo doméstico ou internacional?", "tipoDeVoo", [
+    "Doméstico",
+    "Internacional",
+  ]),
+  ..._switch("tipoDeVoo"),
+
+  // Voo Doméstico
+  {
+    type: "header",
+    id: "tipoDeVoo_Doméstico",
+  },
+
+  ...yesOrNoQuestion(
+    "Você demorou mais de 7 dias para receber a bagagem?",
+    "demorouMaisDe7"
+  ),
+  ..._switch("demorouMaisDe7"),
+
+  {
+    type: "header",
+    id: "demorouMaisDe7_Sim",
+  },
+  ..._skip("empresaPagouGastos"),
+
+  {
+    type: "header",
+    id: "demorouMaisDe7_Não",
+  },
+  ..._skip("naoTemDireitos"),
+
+  // Voo Internacional
+  {
+    type: "header",
+    id: "tipoDeVoo_Internacional",
+  },
+  ...yesOrNoQuestion(
+    "Você demorou mais de 21 dias para receber a bagagem?",
+    "demorouMaisDe21"
+  ),
+  ..._switch("demorouMaisDe21"),
+
+  {
+    type: "header",
+    id: "demorouMaisDe21_Sim",
+  },
+  ..._skip("formularioLead"),
+
+  {
+    type: "header",
+    id: "demorouMaisDe21_Não",
+  },
+  ..._skip("empresaPagouGastos"),
+
+  // Empresa pagou gastos?
+  {
+    type: "header",
+    id: "empresaPagouGastos",
+  },
+  ...yesOrNoQuestion(
+    "A empresa pagou os gastos emergenciais desse período?",
+    "empresaPagouGastos"
+  ),
+  ..._switch("empresaPagouGastos"),
+  {
+    type: "header",
+    id: "empresaPagouGastos_Não",
+  },
+  ..._skip("formularioLead"),
+  {
+    type: "header",
+    id: "empresaPagouGastos_Sim",
+  },
+  ..._skip("naoTemDireitos"),
+
+  // ===========
+  // Overbooking
+  // ===========
+  {
+    type: "header",
+    id: "problema_Overbooking",
+  },
+  ...yesOrNoQuestion(
+    "Você demorou mais de 2 horas para embarcar?",
+    "maisDe2Horas"
+  ),
+  ..._switch("maisDe2Horas"),
+  {
+    type: "header",
+    id: "maisDe2Horas_Sim",
+  },
+  ..._skip("formularioLead"),
+
+  {
+    type: "header",
+    id: "maisDe2Horas_Não",
+  },
+  ..._skip("naoTemDireitos"),
+
+  // ===================
+  // Formulário de Leads
+  // ===================
   {
     type: "header",
     id: "formularioLead",
   },
-  ...received(["Uhul!"]),
+  ...received(["Formulário Lead"]),
+  ..._skip("final"),
 
+  // ================
+  // Não tem direitos
+  // ================
   {
     type: "header",
     id: "naoTemDireitos",
   },
+  ...received(["Infelizmente, nesse caso você não tem direito."]),
+  ..._skip("final"),
+
+  // =====
+  // Final
+  // =====
+  {
+    type: "header",
+    id: "final",
+  },
   ...received([
-    "Infelizmente, nesse caso você não tem direito.",
     "Se restou alguma dúvida, você pode apertar o ícone do Whatsapp acima e conversar comigo por lá.",
   ]),
 ]
@@ -138,7 +262,7 @@ const messageDatabase = [
 export default () => (
   <Chat
     nav={{
-      logoHref: "http://indenizamais.com.br/landing/dpvat/1",
+      logo: "/img/pa-logo.png",
       whatsapp: "11963197881",
     }}
     messageInterval={1}

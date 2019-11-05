@@ -17,16 +17,19 @@ const received = (messages, firstMessageId = null) =>
   messages.map((content, i) => ({
     type: "received",
     content,
-    id: i == 0 ? firstMessageId : null,
+    id: i === 0 ? firstMessageId : null,
   }))
+
 const sent = (messages, firstMessageId) =>
   messages.map((content, i) => ({
     type: "sent",
     content,
     id: i == 0 ? firstMessageId : null,
   }))
-const question = (content, name, options) => [
+
+const question = (content, name, options, messageId = null) => [
   {
+    id: messageId,
     type: "received",
     content,
   },
@@ -45,8 +48,8 @@ const question = (content, name, options) => [
     content: `{${name}}`,
   },
 ]
-const yesOrNoQuestion = (content, name) =>
-  question(content, name, ["Sim", "Não"])
+const yesOrNoQuestion = (content, name, messageId) =>
+  question(content, name, ["Sim", "Não"], messageId)
 
 const _if = name => [
   {
@@ -54,7 +57,15 @@ const _if = name => [
     name,
   },
 ]
-const _skip = (skip_id, id) => [
+
+const _switch = name => [
+  {
+    type: "if",
+    name,
+  },
+]
+
+const _skip = (skip_id, id = null) => [
   {
     type: "skip",
     skip_id,
@@ -211,17 +222,27 @@ class Chat extends React.Component {
     let currentMessageIndex = lastMessage + 1
     let currentMessage = { ...messageDatabase[currentMessageIndex] }
 
+    // If the message is a header
+    while (currentMessage.type === "header") {
+      // If we have the header type, we just skip to the next message
+      currentMessageIndex = currentMessageIndex + 1
+      currentMessage = { ...messageDatabase[currentMessageIndex] }
+    }
+
+    // If the message is an IF or SKIP
     if (currentMessage && currentMessage.type) {
       if (currentMessage.type === "if" || currentMessage.type === "skip") {
         const msgId =
-          currentMessage.type == "if"
+          currentMessage.type === "if"
             ? `${currentMessage.name}_${formData[currentMessage.name]}`
             : currentMessage.skip_id
 
         if (currentMessage[formData[currentMessage.name]]) {
+          console.log("if")
           currentMessage.type = "received"
           currentMessage.content = currentMessage[formData[currentMessage.name]]
         } else {
+          console.log("else", msgId)
           currentMessage = messageDatabase.find((msg, i) => {
             if (msgId === msg.id) {
               currentMessageIndex = i
@@ -231,16 +252,10 @@ class Chat extends React.Component {
         }
       }
 
-      if (currentMessage.type === "header") {
-        // If we have the header type, we just skip to the next message
-        currentMessageIndex = currentMessageIndex + 1
-        currentMessage = { ...messageDatabase[currentMessageIndex] }
-      }
-
-      console.log(currentMessage)
-
       currentMessage.key = currentMessageIndex
       const messages = [...this.state.messages, currentMessage]
+
+      console.log(currentMessage)
 
       this.setState({ messages, lastMessage: currentMessageIndex })
       window.scrollTo(0, document.body.scrollHeight)
@@ -330,7 +345,7 @@ class Chat extends React.Component {
           )
 
           return (
-            <div>
+            <div key={i}>
               <Message
                 key={message.key}
                 avatar={avatar}
@@ -366,4 +381,5 @@ class Chat extends React.Component {
   }
 }
 
+export { received, sent, question, yesOrNoQuestion, _switch, _skip }
 export default Chat
