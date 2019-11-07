@@ -3,6 +3,7 @@ templateKey: landing-page
 title: New landing page
 sections:
   - buttonColor: '#ec9314'
+    buttonLink: 'https://youthful-davinci-a51b66.netlify.com/chat/'
     buttonText: Quero verificar agora
     customCSS: |-
       border-bottom: none;
