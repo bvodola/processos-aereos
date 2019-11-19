@@ -3,6 +3,7 @@ templateKey: landing-page
 title: New landing page
 sections:
   - buttonColor: '#ec9314'
+    buttonLink: 'https://youthful-davinci-a51b66.netlify.com/chat/'
     buttonText: Quero verificar agora
     customCSS: |-
       border-bottom: none;
@@ -135,7 +136,8 @@ sections:
       por algum motivo não conseguirmos sua indenização, você não terá nenhum
       prejuízo financeiro.
     type: textEditor
-  - buttonText: Quero verificar
+  - buttonLink: 'https://youthful-davinci-a51b66.netlify.com/chat'
+    buttonText: Quero verificar
     features: []
     numberedFeatures: false
     type: features
