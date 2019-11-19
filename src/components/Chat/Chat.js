@@ -1,7 +1,10 @@
 import React from "react"
+import axios from "axios"
 import Message from "../Message"
 import Nav from "../Nav"
 import "./Chat.sass"
+
+const BACKEND_URL = "http://localhost:3000"
 
 function getParam(name, url = window.location.href) {
   if (!url) url = window.location.href
@@ -307,19 +310,35 @@ class Chat extends React.Component {
     try {
       const { formData } = this.state
       if (!formData._id) {
-        // const _id = (await axios.post(
-        //   `http://leadmaster.mybluemix.net/api/leads/`,
-        //   formData,
-        //   {}
-        // )).data._id
-        // this.setFormData("_id", _id)
+        const _id = (await axios.post(
+          `${BACKEND_URL}/api/leads/`,
+          formData,
+          {}
+        )).data._id
+        this.setFormData("_id", _id)
       } else {
-        // await axios.put(
-        //   `http://leadmaster.mybluemix.net/api/leads/${formData._id}`,
-        //   formData,
-        //   {}
-        // )
+        await axios.put(
+          `${BACKEND_URL}/api/leads/${formData._id}`,
+          formData,
+          {}
+        )
       }
+      // axios
+      //   .post(BACKEND_URL + "/api/mail/send/", {
+      //     from: "leads@indenizamais.com.br",
+      //     to: formData.to,
+      //     subject: "Lead IndenizaMais",
+      //     text: `Nome: ${formData.name}, Telefone: ${formData.phone} \n\nMensagem,: ${formData.content}`,
+      //   })
+      //   .then(function() {
+      //     gtag_report_conversion()
+      //     setFormState(form, "DEFAULT")
+      //     toggleSuccessAlert()
+      //   })
+      //   .catch(function(err) {
+      //     console.log("Error", err)
+      //     setFormState(form, "DEFAULT")
+      //   })
     } catch (err) {
       console.log(err)
     }
@@ -332,12 +351,7 @@ class Chat extends React.Component {
     return (
       <div className="chat">
         <span className="background"></span>
-        <Nav
-          logo={"/img/logo-indeniza-mais.png"}
-          phone={"(11) 4712-9278"}
-          whatsapp={"11999668246"}
-          {...nav}
-        />
+        <Nav {...nav} />
 
         {messages.map((message, i) => {
           const avatar = !(

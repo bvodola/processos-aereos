@@ -57,8 +57,8 @@ export default props => {
     <Layout>
       <Nav
         logo={"/img/pa-logo.png"}
-        phone={"(11) 4712-9278"}
-        whatsapp={"11999668246"}
+        phone={"(11) 99469-5279"}
+        whatsapp={"11994695279"}
       />
       {sections &&
         sections.map((section, i) => (

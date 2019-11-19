@@ -102,7 +102,10 @@ export default props => {
                   <button
                     key={i}
                     onClick={ev => {
-                      setFormData(field.name, option, sendQueuedMessages)
+                      setFormData(field.name, option, () => {
+                        sendQueuedMessages()
+                        sendFormData()
+                      })
                     }}
                   >
                     {option}

@@ -5,6 +5,7 @@ import Chat, {
   yesOrNoQuestion,
   _switch,
   _skip,
+  sent,
 } from "../../components/Chat/Chat"
 
 const messageDatabase = [
@@ -12,9 +13,38 @@ const messageDatabase = [
   // Intro
   // =====
   ...received([
-    "Olá, {name}. Meu nome é Victor. Sou consultor especialista em processos aéreos",
-    "Vou te ajudar a receber sua indenização. Mas primeiro preciso entender um pouco sobre seu caso.",
-    "Lembre-se de que a qualquer momento você apertar o ícone do Whatsapp acima e conversar comigo por lá.",
+    "Olá! Sou o Alexandre, consultor especialista em processos aéreos",
+    "Vou te ajudar a receber sua indenização. Vamos entender um pouco sobre seu caso.",
+    "Qual seu nome, por favor?",
+  ]),
+
+  {
+    type: "form",
+    fields: [
+      {
+        name: "nome",
+        type: "text",
+        autoFocus: true,
+      },
+    ],
+  },
+  ...sent(["{nome}"]),
+  ...received(["Ok, {nome}! E qual número do seu celular com DDD?"]),
+  {
+    type: "form",
+    fields: [
+      {
+        name: "celular",
+        type: "text",
+        htmlType: "tel",
+        mask: "(99) 99999-9999",
+        autoFocus: true,
+      },
+    ],
+  },
+  ...sent(["{celular}"]),
+  ...received([
+    "Obrigado pelas informações, {nome}! Lembre-se: A qualquer momento você apertar o ícone do Whatsapp acima e conversar comigo por lá.",
   ]),
 
   // ==================
@@ -234,7 +264,9 @@ const messageDatabase = [
     type: "header",
     id: "formularioLead",
   },
-  ...received(["Formulário Lead"]),
+  ...received([
+    "Boas notícias, {nome}. Você tem SIM direito a uma indenização.",
+  ]),
   ..._skip("final"),
 
   // ================
@@ -254,8 +286,25 @@ const messageDatabase = [
     type: "header",
     id: "final",
   },
+  ...yesOrNoQuestion(
+    "Gostaria de continuar a conversa por Whatsapp?",
+    "conversarNoWhatsapp"
+  ),
+  ..._switch("conversarNoWhatsapp"),
+  {
+    type: "header",
+    id: "conversarNoWhatsapp_Sim",
+  },
+  {
+    type: "redirect",
+    url: "https://wa.me/5511994695279",
+  },
+  {
+    type: "header",
+    id: "conversarNoWhatsapp_Não",
+  },
   ...received([
-    "Se restou alguma dúvida, você pode apertar o ícone do Whatsapp acima e conversar comigo por lá.",
+    "Obrigado pelo contato, {nome}! Em breve eu retorno para continuarmos o atendimento.",
   ]),
 ]
 
@@ -263,10 +312,14 @@ export default () => (
   <Chat
     nav={{
       logo: "/img/pa-logo.png",
-      whatsapp: "11963197881",
+      phone: "(11) 99469-5279",
+      whatsapp: "11994695279",
     }}
-    messageInterval={1}
+    initialFormData={{
+      company: "processo-aereo",
+    }}
+    messageInterval={700}
     messageDatabase={messageDatabase}
-    avatarSrc={"/img/victor.jpg"}
+    avatarSrc={"/img/alexandre.jpg"}
   />
 )
