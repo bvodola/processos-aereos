@@ -4,7 +4,7 @@ import Message from "../Message"
 import Nav from "../Nav"
 import "./Chat.sass"
 
-const BACKEND_URL = "http://leadmaster.com.br"
+const BACKEND_URL = "https://www.leadmaster.com.br"
 
 function getParam(name, url = window.location.href) {
   if (!url) url = window.location.href
