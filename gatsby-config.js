@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `Processo Aéreo`,
+    author: `Thiago Vodola`,
+    description: `Indenizações para voos cancelados ou atrasados`,
+    siteUrl: `https://processoaereo.com.br/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `processoaereo`,
     },
   },
   plugins: [
@@ -89,6 +89,16 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+      },
+    },
+
+    // Google Tag Manger
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-KTXCG3S",
+        includeInDevelopment: true,
+        defaultDataLayer: null,
       },
     },
   ],
