@@ -3,7 +3,7 @@ templateKey: landing-page
 title: New landing page
 sections:
   - buttonColor: '#ec9314'
-    buttonLink: 'https://youthful-davinci-a51b66.netlify.com/chat/'
+    buttonLink: 'https://www.processoaereo.com.br/chat/'
     buttonText: Quero verificar agora
     customCSS: |-
       border-bottom: none;
@@ -21,9 +21,9 @@ sections:
     mobileImage: /img/airplane-ticket.png
     type: jumbotron
   - bgColor: '#fff'
-    buttonLink: 'http://www.google.com'
+    buttonLink: 'https://www.processoaereo.com.br/chat/'
     buttonText: Quero ser indenizado
-    description: São apenas 3 passos para você obter a sua indenização!
+    description: Consiga sua indenização em apenas 3 passos
     feature:
       - description: >-
           Com alguns cliques, identificamos se você tem direito a uma
@@ -38,16 +38,16 @@ sections:
         title: Receba a indenização
     features:
       - description: >-
-          Com apenas alguns cliques, identificamos se você tem direito a uma
-          indenização.
+          Em menos de 2 minutos, identificamos se você tem direito a ser
+          indenizado
         image: /img/airplane-ticket.png
-        title: Verifique seus direitos
-      - description: 'Cadastre o seu pedido online, sem sair de casa, em apenas 5 minutos.'
+        title: Verifique se tem direito
+      - description: 'Faça o seu pedido online, de onde estiver, em apenas 5 minutos.'
         image: /img/smartphone.png
-        title: Reivindique online
-      - description: Nós cuidamos de toda a burocracia e você recebe o seu dinheiro.
+        title: Solicite online
+      - description: Cuidaremos de toda burocracia e você receberá o seu dinheiro!
         image: /img/money-bag.png
-        title: Receba a indenização
+        title: Receba sua indenização
     header: Como a Processos Aéreos funciona?
     numberedFeatures: true
     type: features
